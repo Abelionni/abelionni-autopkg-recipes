@@ -88,8 +88,31 @@ All URLs present in the recipes __must__ point to the product developer's websit
 If a recipe requires a custom processor, we first recommend considering whether it would be valuable in the core AutoPkg lib. If not and under certain circumstances, a custom processor __may__ be allowed here after a deep code review. That requires more time from our reviewers, so avoid it if you expect your contribution to be made available quickly.
  
 Payload (dmg, pkg, app) code signature verification __must__ be checked by the download recipe.
- 
- 
+
+All recipe output file __must__ be named in lowercase and without spaces.
+
+When content are pushed into a third part package distribution solution (like munki), this repository __must__ be identified as source of content. With munki for example, every imported content __must__ reside in the ```abelionni_trusted``` folder (ex: ```abelionni_trusted/microsoft/office/2016```).
+
+## Munki specific rules
+
+At Abelionni we use munki. So we add special rules to all recipes provided here.
+
+Munki subfolders __must__ be lowercase and without spaces. 
+
+All imported items __must__ be located in the ```abelionni_trusted``` folder.
+
+Under ```abelionni_trusted```, subfolder must be created with one of the following nomenclature: ```abelionni_trusted/<developer>/<product>``` or ```abelionni_trusted/<developer>/<product>/<major version>```. Here is some example:
+
+```
+abelionni_trusted/apple/macos/10.11
+abelionni_trusted/apple/macos/10.12
+abelionni_trusted/microsoft/office/2016
+abelionni_trusted/microsoft/office/2011
+abelionni_trusted/adobe/flash_player
+abelionni_trusted/adobe/flash_player
+abelionni_trusted/bare_bones_software/text_wrangler
+```
+
 ## Lifecycle
  
 ### Contribution
